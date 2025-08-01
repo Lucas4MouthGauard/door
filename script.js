@@ -376,6 +376,20 @@ function openDoor(doorElement) {
         return;
     }
     
+    // Show share button first, user must share before opening door
+    showShareButton();
+    
+    // Store the door element for later use
+    window.pendingDoor = doorElement;
+    
+    // Show message that sharing is required
+    showFloatingText("🚪 Share first to open the door! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+}
+
+// Function to actually open the door after sharing
+function actuallyOpenDoor(doorElement) {
+    console.log('Actually opening door after share');
+    
     doorElement.classList.add('opening');
     console.log('Added opening class');
     
@@ -413,9 +427,6 @@ function openDoor(doorElement) {
         // Trigger door opened event
         document.dispatchEvent(new CustomEvent('doorOpened'));
         
-        // Show share button after door opens
-        showShareButton();
-        
         // Reset door state
         setTimeout(() => {
             doorElement.style.transform = '';
@@ -438,7 +449,7 @@ function showShareButton() {
         }, 100);
         
         // Add floating effect
-        showFloatingText("🎉 Share your adventure! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+        showFloatingText("🚪 Share to unlock the door! 🚀", window.innerWidth / 2, window.innerHeight / 2);
         
         // Add celebration particles
         createShareParticles();
@@ -466,7 +477,7 @@ function createShareParticles() {
 
 // Share to Twitter function
 function shareToTwitter() {
-    const shareText = "The first AI door on SOL. Where you think before opening the door, that's where you'll arrive after opening it 🚪✨";
+    const shareText = "The first $AIDoor @Door_memebonk on Solana\n\nThink before you open\nYou'll arrive where you imagined 🚪✨";
     const shareUrl = encodeURIComponent(window.location.href);
     const shareTextEncoded = encodeURIComponent(shareText);
     
@@ -477,13 +488,21 @@ function shareToTwitter() {
     
     // Add celebration effect
     createShareCelebration();
+    
+    // Open the door after sharing
+    if (window.pendingDoor) {
+        setTimeout(() => {
+            actuallyOpenDoor(window.pendingDoor);
+            window.pendingDoor = null; // Clear the pending door
+        }, 1000); // Wait 1 second before opening door
+    }
 }
 
 // Create share celebration effect
 function createShareCelebration() {
     // Create multiple floating texts
     const celebrations = [
-        "🎉 Shared! 🎉",
+        "🚪 Door unlocking! 🚪",
         "🚀 To the moon! 🚀",
         "💎 Diamond hands! 💎",
         "🦍 Ape together strong! 🦍",

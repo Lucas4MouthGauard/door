@@ -21,7 +21,10 @@
 ## 🚀 分享内容
 
 分享时会自动带上这句话：
-> "The first AI door on SOL. Where you think before opening the door, that's where you'll arrive after opening it 🚪✨"
+> "The first $AIDoor @Door_memebonk on Solana
+
+Think before you open
+You'll arrive where you imagined 🚪✨"
 
 ## 🎨 技术特色
 
