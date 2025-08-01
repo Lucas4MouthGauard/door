@@ -376,17 +376,91 @@ function openDoor(doorElement) {
         return;
     }
     
-    // Show share button in center of screen
-    showShareButtonInCenter();
-    
     // Store the door element for later use
     window.pendingDoor = doorElement;
     
-    // Show message that sharing is required
-    showFloatingText("🚪 Click to open the door! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+    // Step 1: Show share requirement message
+    showShareRequirement();
 }
 
-// Show share button in center of screen
+// Step 1: Show share requirement message
+function showShareRequirement() {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'share-modal';
+    modal.innerHTML = `
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3>🚪 请先分享推文</h3>
+                <p>分享后才能打开神秘之门</p>
+            </div>
+            <div class="share-modal-body">
+                <button class="share-modal-button" onclick="proceedToShare()">
+                    📱 分享到Twitter
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Add floating text
+    showFloatingText("🚪 请先分享推文 🚀", window.innerWidth / 2, window.innerHeight / 2);
+}
+
+// Step 2: Proceed to share
+function proceedToShare() {
+    // Remove modal
+    const modal = document.querySelector('.share-modal');
+    if (modal) {
+        modal.remove();
+    }
+    
+    // Share to Twitter
+    const shareText = "The first $AIDoor @Door_memebonk on Solana\n\nThink before you open\nYou'll arrive where you imagined 🚪✨";
+    const shareTextEncoded = encodeURIComponent(shareText);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}`;
+    
+    // Open Twitter share page in new tab
+    window.open(twitterUrl, '_blank');
+    
+    // Step 3: Show confirmation and open door
+    setTimeout(() => {
+        showOpenDoorConfirmation();
+    }, 500);
+}
+
+// Step 3: Show open door confirmation
+function showOpenDoorConfirmation() {
+    // Create confirmation modal
+    const confirmation = document.createElement('div');
+    confirmation.className = 'confirmation-modal';
+    confirmation.innerHTML = `
+        <div class="confirmation-content">
+            <h2>🚪 Open The Door! 🚀</h2>
+        </div>
+    `;
+    
+    document.body.appendChild(confirmation);
+    
+    // Add celebration effects
+    createShareCelebration();
+    
+    // Auto-remove after 1 second
+    setTimeout(() => {
+        if (confirmation.parentNode) {
+            confirmation.parentNode.removeChild(confirmation);
+        }
+        
+        // Step 4: Actually open the door
+        if (window.pendingDoor) {
+            actuallyOpenDoor(window.pendingDoor);
+            window.pendingDoor = null;
+        }
+    }, 1000);
+}
+
+// Show share button in center of screen (kept for compatibility)
 function showShareButtonInCenter() {
     const shareSection = document.getElementById('share-section');
     if (shareSection) {
