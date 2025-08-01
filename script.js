@@ -848,4 +848,38 @@ style.textContent = `
         100% { filter: hue-rotate(360deg); }
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Contract address copy functionality
+function setupContractAddressCopy() {
+    const contractAddress = document.querySelector('.contract-address');
+    if (contractAddress) {
+        contractAddress.addEventListener('click', function() {
+            const address = '00000000000000000000000000';
+            navigator.clipboard.writeText(address).then(() => {
+                // Show success message
+                showFloatingText("📋 CA Copied! 📋", this.offsetLeft + this.offsetWidth / 2, this.offsetTop - 20);
+                
+                // Add visual feedback
+                this.style.background = 'rgba(255, 215, 0, 0.3)';
+                this.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    this.style.background = '';
+                    this.style.transform = '';
+                }, 500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                showFloatingText("❌ Copy failed! ❌", this.offsetLeft + this.offsetWidth / 2, this.offsetTop - 20);
+            });
+        });
+        
+        // Add tooltip
+        contractAddress.title = "Click to copy contract address";
+    }
+}
+
+// Initialize contract address copy functionality
+document.addEventListener('DOMContentLoaded', function() {
+    setupContractAddressCopy();
+}); 

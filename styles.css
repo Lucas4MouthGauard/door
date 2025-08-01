@@ -804,4 +804,106 @@ body.rainbow-mode {
     body.rainbow-mode {
         animation: none;
     }
+}
+
+/* Twitter Link Styles */
+.twitter-link {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.twitter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #1DA1F2 0%, #0D8BD9 100%);
+    border: 2px solid rgba(29, 161, 242, 0.3);
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 15px rgba(29, 161, 242, 0.3),
+        0 0 0 1px rgba(29, 161, 242, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.twitter-button:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 
+        0 8px 25px rgba(29, 161, 242, 0.4),
+        0 0 0 2px rgba(29, 161, 242, 0.3);
+    filter: brightness(1.1);
+}
+
+.twitter-button:active {
+    transform: translateY(0) scale(1.05);
+}
+
+.twitter-button svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.twitter-button:hover svg {
+    transform: scale(1.1);
+}
+
+/* Contract Address Styles */
+.contract-address {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    margin-top: 15px;
+    display: inline-block;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    box-shadow: 
+        0 2px 10px rgba(255, 215, 0, 0.2),
+        0 0 0 1px rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: all;
+}
+
+.contract-address:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 
+        0 4px 15px rgba(255, 215, 0, 0.3),
+        0 0 0 2px rgba(255, 215, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Responsive Twitter Link */
+@media (max-width: 768px) {
+    .twitter-link {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .twitter-button {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .twitter-button svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contract-address {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
 } 

@@ -1,4 +1,4 @@
-# $DOOR - Random Doors to Absurd Worlds 🚪
+# $AIDoor - Random Doors to Absurd Worlds 🚪
 
 一个充满趣味和惊喜的AI门项目，每次点击门都会带你进入一个随机的荒谬世界！
 
