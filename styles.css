@@ -1,0 +1,731 @@
+/* Premium Gaming Style - Inspired by AAA Game Studios */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Premium Background with Subtle Effects */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 75% 75%, rgba(78, 205, 196, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.04) 0%, transparent 60%);
+    z-index: -2;
+}
+
+/* Subtle Animated Background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.02) 50%, transparent 100%);
+    animation: lightBeam 15s ease-in-out infinite;
+    z-index: -1;
+    will-change: transform;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Premium Header Design */
+.pixel-header {
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+    padding: 40px 0;
+}
+
+.pixel-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    position: relative;
+    text-shadow: none;
+}
+
+.pixel-title::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 237, 78, 0.1));
+    filter: blur(20px);
+    z-index: -1;
+    animation: titleGlow 6s ease-in-out infinite alternate;
+}
+
+.pixel-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    margin-top: 10px;
+    position: relative;
+}
+
+/* 门容器 */
+.doors-container {
+    margin: 50px 0;
+}
+
+.door-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Premium Door Design */
+.door {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    margin: 25px;
+}
+
+.door:hover {
+    transform: scale(1.08) rotateY(12deg);
+    filter: brightness(1.3) contrast(1.1);
+}
+
+.door.opening {
+    animation: doorOpening 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes doorOpening {
+    0% {
+        transform: scale(1) rotateY(0deg);
+        filter: brightness(1) contrast(1);
+    }
+    25% {
+        transform: scale(1.05) rotateY(25deg);
+        filter: brightness(1.2) contrast(1.1);
+    }
+    50% {
+        transform: scale(1.1) rotateY(50deg);
+        filter: brightness(1.4) contrast(1.2);
+    }
+    75% {
+        transform: scale(1.15) rotateY(75deg);
+        filter: brightness(1.6) contrast(1.3);
+    }
+    100% {
+        transform: scale(1.2) rotateY(90deg);
+        filter: brightness(1.8) contrast(1.4);
+    }
+}
+
+.door-frame {
+    width: 150px;
+    height: 210px;
+    background: linear-gradient(135deg, #2d1b0f 0%, #4a2c1a 50%, #2d1b0f 100%);
+    border: 3px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.door-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.15) 50%, transparent 100%);
+    animation: doorShimmer 6s infinite;
+    will-change: transform;
+}
+
+.door-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at center, transparent 0%, rgba(255, 215, 0, 0.08) 70%, transparent 100%);
+    animation: doorGlow 4s ease-in-out infinite alternate;
+    will-change: opacity;
+}
+
+.door-knob {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle, #ffd700, #ff8c00, #ffd700);
+    border: 3px solid #b8860b;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.8),
+        0 0 30px rgba(255, 215, 0, 0.4);
+    animation: knobGlow 3s ease-in-out infinite alternate;
+    transition: transform 0.3s ease;
+    will-change: box-shadow;
+}
+
+.door.opening .door-knob {
+    animation: knobTurn 2s ease-in-out;
+}
+
+@keyframes knobTurn {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-50%) rotate(90deg);
+    }
+    50% {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    75% {
+        transform: translateY(-50%) rotate(270deg);
+    }
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes screenFlash {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+@keyframes doorLight {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    50% {
+        width: 200px;
+        height: 200px;
+        opacity: 1;
+    }
+    100% {
+        width: 400px;
+        height: 400px;
+        opacity: 0;
+    }
+}
+
+@keyframes discoveryReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes discoveryHide {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}
+
+.door-number {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: #ffd700;
+    text-shadow: 
+        0 0 10px #ffd700,
+        0 0 20px #ffd700,
+        1px 1px 0px #000,
+        2px 2px 0px #000;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+
+/* 好莱坞大片风格按钮 */
+.pixel-button {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    color: #1a1a2e;
+    padding: 16px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    box-shadow: 
+        0 4px 20px rgba(255, 215, 0, 0.3),
+        0 0 0 1px rgba(255, 215, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.pixel-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 30px rgba(255, 215, 0, 0.4),
+        0 0 0 1px rgba(255, 215, 0, 0.3);
+    filter: brightness(1.05);
+}
+
+.pixel-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.pixel-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+}
+
+.pixel-button:hover::before {
+    left: 100%;
+}
+
+/* 分享部分 */
+.share-section {
+    margin: 40px 0;
+    animation: sharePulse 4s ease-in-out infinite;
+    text-align: center;
+    will-change: transform;
+}
+
+@keyframes sharePulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.02);
+        filter: brightness(1.1);
+    }
+}
+
+/* 模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #000, #1a1a1a, #000);
+    margin: 5% auto;
+    padding: 0;
+    border: 4px solid #ffd700;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 
+        0 0 50px rgba(255, 215, 0, 0.4),
+        0 0 100px rgba(255, 215, 0, 0.2);
+    animation: modalSlideIn 0.3s ease;
+}
+
+.modal-header {
+    background: linear-gradient(45deg, #ffd700, #ff8c00, #ffd700);
+    padding: 25px;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    font-weight: bold;
+}
+
+.modal-header h3 {
+    color: #000;
+    font-size: 1.3rem;
+    margin: 0;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.close {
+    color: #000;
+    font-size: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.close:hover {
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.screenshot-container {
+    margin-bottom: 20px;
+    border: 3px solid #ffd700;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+#screenshot-canvas {
+    width: 100%;
+    height: auto;
+    background: #000;
+}
+
+.share-text {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 15px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.share-text p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ffd700;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* 好莱坞大片风格动画 */
+@keyframes lightBeam {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(100px, -100px) scale(0);
+    }
+}
+
+@keyframes backgroundFloat {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(0px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 
+            0 0 20px #ffd700,
+            0 0 40px #ffd700,
+            0 0 60px #ffd700,
+            0 0 80px #ffd700,
+            2px 2px 0px #000,
+            4px 4px 0px #000,
+            6px 6px 0px #000;
+    }
+    to {
+        text-shadow: 
+            0 0 30px #ffd700,
+            0 0 50px #ffd700,
+            0 0 70px #ffd700,
+            0 0 90px #ffd700,
+            2px 2px 0px #000,
+            4px 4px 0px #000,
+            6px 6px 0px #000;
+    }
+}
+
+@keyframes titleShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+@keyframes subtitlePulse {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+}
+
+@keyframes doorShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes doorGlow {
+    from { opacity: 0.3; }
+    to { opacity: 0.7; }
+}
+
+@keyframes knobGlow {
+    from {
+        box-shadow: 
+            0 0 15px rgba(255, 215, 0, 0.8),
+            0 0 30px rgba(255, 215, 0, 0.4);
+    }
+    to {
+        box-shadow: 
+            0 0 25px rgba(255, 215, 0, 1),
+            0 0 50px rgba(255, 215, 0, 0.6);
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .pixel-title {
+        font-size: 2.5rem;
+    }
+    
+    .door-frame {
+        width: 100px;
+        height: 140px;
+    }
+    
+    .door-row {
+        gap: 15px;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .share-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
+
+/* 像素粒子效果 */
+.pixel-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #4ecdc4;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.5;
+    }
+}
+
+/* Meme互动效果样式 */
+.meme-floating-text {
+    position: fixed;
+    color: #ffd700;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 10000;
+    pointer-events: none;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    animation: floatUp 3s ease-out forwards;
+}
+
+.meme-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: trailFade 1s ease-out forwards;
+}
+
+.meme-color-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: 9998;
+    pointer-events: none;
+    animation: colorFlash 0.5s ease-out;
+}
+
+/* 门悬停时的meme效果 */
+.door:hover::after {
+    content: attr(data-meme);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 215, 0, 0.9);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 1000;
+    animation: memeTooltip 0.3s ease-out;
+}
+
+@keyframes memeTooltip {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* 快速点击效果 */
+.door.spam-clicking {
+    animation: spamShake 0.1s ease-in-out infinite;
+}
+
+@keyframes spamShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+/* 彩虹模式效果 */
+body.rainbow-mode {
+    animation: rainbowMode 2s infinite;
+}
+
+/* 响应式meme效果 */
+@media (max-width: 768px) {
+    .meme-floating-text {
+        font-size: 1rem;
+    }
+    
+    .door:hover::after {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+    }
+}
+
+/* 性能优化 */
+.meme-effect {
+    will-change: transform, opacity;
+}
+
+/* 无障碍支持 */
+@media (prefers-reduced-motion: reduce) {
+    .meme-floating-text,
+    .meme-trail,
+    .meme-color-flash,
+    .door.spam-clicking,
+    body.rainbow-mode {
+        animation: none;
+    }
+} 

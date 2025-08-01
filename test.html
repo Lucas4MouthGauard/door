@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试分享功能</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>分享功能测试</h1>
+    
+    <div class="test-section">
+        <h2>测试Twitter分享</h2>
+        <button onclick="testTwitterShare()">测试Twitter分享</button>
+        <p>点击按钮测试Twitter分享功能</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>测试图片下载</h2>
+        <button onclick="testImageDownload()">测试图片下载</button>
+        <p>点击按钮测试图片下载功能</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>返回主网站</h2>
+        <button onclick="window.location.href='index.html'">返回$DOOR</button>
+        <p>点击按钮返回主网站</p>
+    </div>
+
+    <script>
+        function testTwitterShare() {
+            const tweetTemplates = [
+                "🚪 我在@$DOOR打开了一扇门，看到了一个荒谬的世界！这太荒谬了！🤯\n\n你也来试试看？\n\n🚪✨🔥",
+                "刚刚在@$DOOR经历了一次疯狂冒险！打开门后看到了一个荒谬的世界...\n\n这个世界太疯狂了！😱\n\n🎭🎪🎨",
+                "🚀 @$DOOR 让我发现了一个新世界！打开门后看到了一个荒谬的世界\n\n这绝对是今天最离谱的发现！\n\n🌟💫🚀"
+            ];
+            
+            const randomTemplate = tweetTemplates[Math.floor(Math.random() * tweetTemplates.length)];
+            const url = window.location.href.replace('test.html', 'index.html');
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(randomTemplate)}&url=${encodeURIComponent(url)}&hashtags=DOOR,memecoin,web3`;
+            window.open(twitterUrl, '_blank');
+            alert('Twitter分享窗口已打开！包含新的推文模板和标签！');
+        }
+        
+        function testImageDownload() {
+            // 创建一个简单的测试图片
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 400;
+            const ctx = canvas.getContext('2d');
+            
+            // 绘制背景
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, 600, 400);
+            
+            // 绘制文字
+            ctx.fillStyle = '#ff6b6b';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('$DOOR 测试', 300, 200);
+            
+            // 下载图片
+            const link = document.createElement('a');
+            link.download = 'door-test.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            
+            alert('测试图片已下载！');
+        }
+    </script>
+</body>
+</html> 

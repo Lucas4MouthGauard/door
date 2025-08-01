@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分享功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+        .test-button {
+            background: #4ecdc4;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background: #44a08d;
+        }
+        .log {
+            background: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .share-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 14px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>分享功能测试</h1>
+    
+    <div>
+        <button class="test-button" onclick="testShowSharePrompt()">测试显示分享提示</button>
+        <button class="test-button" onclick="testShowShareModal()">测试显示分享模态框</button>
+        <button class="test-button" onclick="simulateDoorOpened()">模拟开门事件</button>
+        <button class="test-button" onclick="simulateVisibilityChange()">模拟页面可见性变化</button>
+        <button class="test-button" onclick="clearAllPrompts()">清除所有提示</button>
+    </div>
+    
+    <div class="log" id="log"></div>
+    
+    <button onclick="window.location.href='index.html'">返回主页面</button>
+
+    <script>
+        // 模拟分享提示函数
+        function showSharePrompt() {
+            // 检查是否已经有分享提示存在
+            const existingPrompt = document.querySelector('.share-prompt');
+            if (existingPrompt) {
+                log('分享提示已存在，跳过重复创建');
+                return;
+            }
+            
+            const sharePrompt = document.createElement('div');
+            sharePrompt.className = 'share-prompt';
+            sharePrompt.innerHTML = '🚪 分享你的发现！';
+            
+            sharePrompt.addEventListener('click', function() {
+                log('点击分享提示');
+                if (sharePrompt.parentNode) {
+                    sharePrompt.parentNode.removeChild(sharePrompt);
+                }
+            });
+            
+            document.body.appendChild(sharePrompt);
+            log('显示分享提示');
+        }
+        
+        // 模拟分享模态框函数
+        function showShareModal() {
+            // 清理所有现有的分享提示
+            const existingPrompts = document.querySelectorAll('.share-prompt');
+            existingPrompts.forEach(prompt => {
+                if (prompt.parentNode) {
+                    prompt.parentNode.removeChild(prompt);
+                }
+            });
+            
+            log('显示分享模态框，已清理所有提示');
+        }
+        
+        function testShowSharePrompt() {
+            log('=== 测试显示分享提示 ===');
+            showSharePrompt();
+        }
+        
+        function testShowShareModal() {
+            log('=== 测试显示分享模态框 ===');
+            showShareModal();
+        }
+        
+        function simulateDoorOpened() {
+            log('=== 模拟开门事件 ===');
+            document.dispatchEvent(new CustomEvent('doorOpened'));
+        }
+        
+        function simulateVisibilityChange() {
+            log('=== 模拟页面可见性变化 ===');
+            // 模拟页面从隐藏变为可见
+            Object.defineProperty(document, 'visibilityState', {
+                value: 'visible',
+                writable: true
+            });
+            document.dispatchEvent(new Event('visibilitychange'));
+        }
+        
+        function clearAllPrompts() {
+            log('=== 清除所有提示 ===');
+            const existingPrompts = document.querySelectorAll('.share-prompt');
+            existingPrompts.forEach(prompt => {
+                if (prompt.parentNode) {
+                    prompt.parentNode.removeChild(prompt);
+                }
+            });
+            log(`清除了 ${existingPrompts.length} 个提示`);
+        }
+        
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${time}] ${message}<br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        // 页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            log('页面加载完成，开始测试分享功能');
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+        .debug-door {
+            width: 100px;
+            height: 150px;
+            background: #ffd700;
+            border: 3px solid #b8860b;
+            margin: 20px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            line-height: 150px;
+            font-weight: bold;
+            color: #000;
+        }
+        .debug-door:hover {
+            background: #fff200;
+        }
+        .debug-door.clicked {
+            background: #ff6b6b;
+            color: #fff;
+        }
+        .log {
+            background: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>门点击调试</h1>
+    
+    <div>
+        <div class="debug-door" onclick="testClick(this, 1)">门 1</div>
+        <div class="debug-door" onclick="testClick(this, 2)">门 2</div>
+        <div class="debug-door" onclick="testClick(this, 3)">门 3</div>
+    </div>
+    
+    <div class="log" id="log"></div>
+    
+    <button onclick="clearLog()">清除日志</button>
+    <button onclick="window.location.href='index.html'">返回主页面</button>
+
+    <script>
+        function testClick(door, number) {
+            door.classList.add('clicked');
+            log(`门 ${number} 被点击了`);
+            
+            setTimeout(() => {
+                door.classList.remove('clicked');
+            }, 1000);
+        }
+        
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${time}] ${message}<br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        function clearLog() {
+            document.getElementById('log').innerHTML = '';
+        }
+        
+        // 测试事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            log('页面加载完成');
+            
+            // 测试querySelector
+            const doors = document.querySelectorAll('.debug-door');
+            log(`找到 ${doors.length} 个门元素`);
+            
+            // 测试点击事件
+            doors.forEach((door, index) => {
+                door.addEventListener('click', function(e) {
+                    log(`事件监听器触发: 门 ${index + 1}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
