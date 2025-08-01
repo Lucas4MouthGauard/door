@@ -391,12 +391,12 @@ function showShareRequirement() {
     modal.innerHTML = `
         <div class="share-modal-content">
             <div class="share-modal-header">
-                <h3>🚪 请先分享推文</h3>
-                <p>分享后才能打开神秘之门</p>
+                <h3>🚪 Please Share Tweet First</h3>
+                <p>Share to unlock the mysterious door</p>
             </div>
             <div class="share-modal-body">
                 <button class="share-modal-button" onclick="proceedToShare()">
-                    📱 分享到Twitter
+                    📱 Share to Twitter
                 </button>
             </div>
         </div>
@@ -405,7 +405,7 @@ function showShareRequirement() {
     document.body.appendChild(modal);
     
     // Add floating text
-    showFloatingText("🚪 请先分享推文 🚀", window.innerWidth / 2, window.innerHeight / 2);
+    showFloatingText("🚪 Please share tweet first! 🚀", window.innerWidth / 2, window.innerHeight / 2);
 }
 
 // Step 2: Proceed to share
