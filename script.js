@@ -376,14 +376,39 @@ function openDoor(doorElement) {
         return;
     }
     
-    // Show share button first, user must share before opening door
-    showShareButton();
+    // Show share button in center of screen
+    showShareButtonInCenter();
     
     // Store the door element for later use
     window.pendingDoor = doorElement;
     
     // Show message that sharing is required
-    showFloatingText("🚪 Share first to open the door! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+    showFloatingText("🚪 Click to open the door! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+}
+
+// Show share button in center of screen
+function showShareButtonInCenter() {
+    const shareSection = document.getElementById('share-section');
+    if (shareSection) {
+        // Position in center of screen
+        shareSection.style.position = 'fixed';
+        shareSection.style.top = '50%';
+        shareSection.style.left = '50%';
+        shareSection.style.transform = 'translate(-50%, -50%)';
+        shareSection.style.zIndex = '10000';
+        shareSection.style.display = 'block';
+        
+        // Add show animation
+        setTimeout(() => {
+            shareSection.classList.add('show');
+        }, 100);
+        
+        // Add floating effect
+        showFloatingText("🚪 Click to open the door! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+        
+        // Add celebration particles
+        createShareParticles();
+    }
 }
 
 // Function to actually open the door after sharing
@@ -489,13 +514,23 @@ function shareToTwitter() {
     // Add celebration effect
     createShareCelebration();
     
-    // Open the door after sharing
+    // Open the door immediately after clicking
     if (window.pendingDoor) {
-        setTimeout(() => {
-            actuallyOpenDoor(window.pendingDoor);
-            window.pendingDoor = null; // Clear the pending door
-        }, 1000); // Wait 1 second before opening door
+        actuallyOpenDoor(window.pendingDoor);
+        window.pendingDoor = null; // Clear the pending door
     }
+    
+    // Hide the share button
+    setTimeout(() => {
+        const shareSection = document.getElementById('share-section');
+        if (shareSection) {
+            shareSection.style.display = 'none';
+            shareSection.style.position = 'static';
+            shareSection.style.top = 'auto';
+            shareSection.style.left = 'auto';
+            shareSection.style.transform = 'none';
+        }
+    }, 500);
 }
 
 // Create share celebration effect

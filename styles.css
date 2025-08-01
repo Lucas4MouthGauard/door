@@ -406,6 +406,7 @@ body::after {
     overflow: hidden;
     backdrop-filter: blur(10px);
     animation: shareButtonGlow 3s ease-in-out infinite alternate;
+    min-width: 200px;
 }
 
 #share-button:hover {
@@ -435,6 +436,34 @@ body::after {
 
 #share-button:hover::before {
     left: 100%;
+}
+
+/* 居中分享按钮的特殊样式 */
+.share-section[style*="position: fixed"] {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 215, 0, 0.2);
+    animation: centerSharePulse 2s ease-in-out infinite;
+}
+
+@keyframes centerSharePulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 
+            0 20px 60px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(255, 215, 0, 0.2);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.02);
+        box-shadow: 
+            0 25px 70px rgba(0, 0, 0, 0.6),
+            0 0 0 2px rgba(255, 215, 0, 0.4);
+    }
 }
 
 @keyframes shareButtonGlow {
