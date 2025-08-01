@@ -363,6 +363,14 @@ body::after {
     animation: sharePulse 4s ease-in-out infinite;
     text-align: center;
     will-change: transform;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.share-section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes sharePulse {
@@ -373,6 +381,74 @@ body::after {
     50% {
         transform: scale(1.02);
         filter: brightness(1.1);
+    }
+}
+
+/* 分享按钮特殊样式 */
+#share-button {
+    background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
+    border: 3px solid rgba(255, 215, 0, 0.5);
+    color: #1a1a2e;
+    padding: 20px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    box-shadow: 
+        0 8px 30px rgba(255, 215, 0, 0.4),
+        0 0 0 2px rgba(255, 215, 0, 0.3),
+        0 0 50px rgba(255, 215, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    animation: shareButtonGlow 3s ease-in-out infinite alternate;
+}
+
+#share-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 40px rgba(255, 215, 0, 0.6),
+        0 0 0 3px rgba(255, 215, 0, 0.4),
+        0 0 70px rgba(255, 215, 0, 0.3);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+#share-button:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+}
+
+#share-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transition: left 0.8s;
+}
+
+#share-button:hover::before {
+    left: 100%;
+}
+
+@keyframes shareButtonGlow {
+    from {
+        box-shadow: 
+            0 8px 30px rgba(255, 215, 0, 0.4),
+            0 0 0 2px rgba(255, 215, 0, 0.3),
+            0 0 50px rgba(255, 215, 0, 0.2);
+    }
+    to {
+        box-shadow: 
+            0 8px 30px rgba(255, 215, 0, 0.6),
+            0 0 0 2px rgba(255, 215, 0, 0.5),
+            0 0 70px rgba(255, 215, 0, 0.4);
     }
 }
 

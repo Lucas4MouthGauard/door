@@ -413,6 +413,9 @@ function openDoor(doorElement) {
         // Trigger door opened event
         document.dispatchEvent(new CustomEvent('doorOpened'));
         
+        // Show share button after door opens
+        showShareButton();
+        
         // Reset door state
         setTimeout(() => {
             doorElement.style.transform = '';
@@ -421,6 +424,90 @@ function openDoor(doorElement) {
             console.log('Door state reset complete');
         }, 1000);
     }, 1500);
+}
+
+// Show share button
+function showShareButton() {
+    const shareSection = document.getElementById('share-section');
+    if (shareSection) {
+        shareSection.style.display = 'block';
+        
+        // Add show animation
+        setTimeout(() => {
+            shareSection.classList.add('show');
+        }, 100);
+        
+        // Add floating effect
+        showFloatingText("🎉 Share your adventure! 🚀", window.innerWidth / 2, window.innerHeight / 2);
+        
+        // Add celebration particles
+        createShareParticles();
+    }
+}
+
+// Create share particles effect
+function createShareParticles() {
+    const shareSection = document.getElementById('share-section');
+    if (!shareSection) return;
+    
+    const rect = shareSection.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            const x = centerX + (Math.random() - 0.5) * 300;
+            const y = centerY + (Math.random() - 0.5) * 300;
+            const emoji = ['🎉', '🚀', '💎', '🦍', '✨', '🌟'][Math.floor(Math.random() * 6)];
+            showFloatingText(emoji, x, y);
+        }, i * 150);
+    }
+}
+
+// Share to Twitter function
+function shareToTwitter() {
+    const shareText = "The first AI door on SOL. Where you think before opening the door, that's where you'll arrive after opening it 🚪✨";
+    const shareUrl = encodeURIComponent(window.location.href);
+    const shareTextEncoded = encodeURIComponent(shareText);
+    
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}&url=${shareUrl}`;
+    
+    // Open Twitter share page in new tab
+    window.open(twitterUrl, '_blank');
+    
+    // Add celebration effect
+    createShareCelebration();
+}
+
+// Create share celebration effect
+function createShareCelebration() {
+    // Create multiple floating texts
+    const celebrations = [
+        "🎉 Shared! 🎉",
+        "🚀 To the moon! 🚀",
+        "💎 Diamond hands! 💎",
+        "🦍 Ape together strong! 🦍",
+        "✨ Magic happens! ✨"
+    ];
+    
+    celebrations.forEach((text, index) => {
+        setTimeout(() => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            showFloatingText(text, x, y);
+        }, index * 200);
+    });
+    
+    // Add screen flash effect
+    createScreenFlash();
+    
+    // Hide share button after sharing
+    setTimeout(() => {
+        const shareSection = document.getElementById('share-section');
+        if (shareSection) {
+            shareSection.style.display = 'none';
+        }
+    }, 3000);
 }
 
 // Show door opening effect
