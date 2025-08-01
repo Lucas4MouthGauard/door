@@ -503,10 +503,10 @@ function createShareParticles() {
 // Share to Twitter function
 function shareToTwitter() {
     const shareText = "The first $AIDoor @Door_memebonk on Solana\n\nThink before you open\nYou'll arrive where you imagined 🚪✨";
-    const shareUrl = encodeURIComponent(window.location.href);
     const shareTextEncoded = encodeURIComponent(shareText);
     
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}&url=${shareUrl}`;
+    // Remove URL from share to avoid local file path
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}`;
     
     // Open Twitter share page in new tab
     window.open(twitterUrl, '_blank');
