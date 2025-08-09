@@ -417,7 +417,7 @@ function proceedToShare() {
     }
     
     // Share to Twitter
-    const shareText = "The first $AIDoor @Door_memebonk on Solana\n\nThink before you open\nYou'll arrive where you imagined 🚪✨";
+    const shareText = "The first $DOOR @DoorMeme on Solana\n\nThink before you open\n\nYou'll arrive where you imagined 🚪✨";
     const shareTextEncoded = encodeURIComponent(shareText);
     const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}`;
     
@@ -576,7 +576,7 @@ function createShareParticles() {
 
 // Share to Twitter function
 function shareToTwitter() {
-    const shareText = "The first $AIDoor @Door_memebonk on Solana\n\nThink before you open\nYou'll arrive where you imagined 🚪✨";
+    const shareText = "The first $DOOR @DoorMeme on Solana\n\nThink before you open\n\nYou'll arrive where you imagined 🚪✨";
     const shareTextEncoded = encodeURIComponent(shareText);
     
     // Remove URL from share to avoid local file path
@@ -964,7 +964,7 @@ function setupContractAddressCopy() {
     const contractAddress = document.querySelector('.contract-address');
     if (contractAddress) {
         contractAddress.addEventListener('click', function() {
-            const address = 'F1dsgeBU5W98VnDjuXK4p3rAhUyH9iuUshHLAcfnbonk';
+            const address = '000000000000000000000000000000';
             navigator.clipboard.writeText(address).then(() => {
                 // Show success message
                 showFloatingText("📋 CA Copied! 📋", this.offsetLeft + this.offsetWidth / 2, this.offsetTop - 20);
