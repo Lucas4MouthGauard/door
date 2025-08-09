@@ -964,7 +964,7 @@ function setupContractAddressCopy() {
     const contractAddress = document.querySelector('.contract-address');
     if (contractAddress) {
         contractAddress.addEventListener('click', function() {
-            const address = '000000000000000000000000000000';
+            const address = 'AbJnqSxnGjpBLR94SszcpP4SZyy4GwbGCXh7RGStpump';
             navigator.clipboard.writeText(address).then(() => {
                 // Show success message
                 showFloatingText("📋 CA Copied! 📋", this.offsetLeft + this.offsetWidth / 2, this.offsetTop - 20);
