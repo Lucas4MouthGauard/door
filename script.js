@@ -417,7 +417,7 @@ function proceedToShare() {
     }
     
     // Share to Twitter
-    const shareText = "The first @Qubit_Gate $QubitGate on @pumpdotfun\n\nThink before you open in the quantum world your choice collapses the wave function\n\nStep through and your qubit will decide the reality you arrive in 🚪✨";
+    const shareText = "The first @QubitGate_meme $QubitGate on @pumpdotfun\n\nThink before you open in the quantum world your choice collapses the wave function\n\nStep through and your qubit will decide the reality you arrive in 🚪✨";
     const shareTextEncoded = encodeURIComponent(shareText);
     const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}`;
     
@@ -964,7 +964,7 @@ function setupContractAddressCopy() {
     const contractAddress = document.querySelector('.contract-address');
     if (contractAddress) {
         contractAddress.addEventListener('click', function() {
-            const address = '7dHr8tH6T3LBp7zzMS4cpDCSJVc3eWc1E63wKkcipump';
+            const address = '00000000000000000000000000';
             navigator.clipboard.writeText(address).then(() => {
                 // Show success message
                 showFloatingText("📋 CA Copied! 📋", this.offsetLeft + this.offsetWidth / 2, this.offsetTop - 20);

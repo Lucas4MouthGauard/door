@@ -22,7 +22,7 @@
 ## 🚀 分享内容
 
 分享时会自动带上这句话：
-> "The first @QubitGate $QubitGate on @pumpdotfun
+> "The first @QubitGate_meme $QubitGate on @pumpdotfun
 
 Think before you open in the quantum world your choice collapses the wave function
 
