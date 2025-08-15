@@ -417,7 +417,7 @@ function proceedToShare() {
     }
     
     // Share to Twitter
-    const shareText = "The first $QubitGate @Qubit_Gate on Solana\n\nThink before you open\n\nYou'll arrive where you imagined 🚪✨";
+    const shareText = "The first @Qubit_Gate $QubitGate on @pumpdotfun\n\nThink before you open in the quantum world your choice collapses the wave function\n\nStep through and your qubit will decide the reality you arrive in 🚪✨";
     const shareTextEncoded = encodeURIComponent(shareText);
     const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTextEncoded}`;
     
@@ -576,7 +576,7 @@ function createShareParticles() {
 
 // Share to Twitter function
 function shareToTwitter() {
-    const shareText = "The first $QubitGate @Qubit_Gate on Solana\n\nThink before you open\n\nYou'll arrive where you imagined 🚪✨";
+    const shareText = "The first @QubitGate $QubitGate on @pumpdotfun\n\nThink before you open in the quantum world your choice collapses the wave function\n\nStep through and your qubit will decide the reality you arrive in 🚪✨";
     const shareTextEncoded = encodeURIComponent(shareText);
     
     // Remove URL from share to avoid local file path

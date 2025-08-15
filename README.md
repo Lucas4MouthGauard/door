@@ -22,11 +22,11 @@
 ## 🚀 分享内容
 
 分享时会自动带上这句话：
-> "The first $QubitGate @Qubit_Gate on Solana
+> "The first @QubitGate $QubitGate on @pumpdotfun
 
-Think before you open
+Think before you open in the quantum world your choice collapses the wave function
 
-You'll arrive where you imagined 🚪✨"
+Step through and your qubit will decide the reality you arrive in 🚪✨"
 
 ## 🎨 技术特色
 
