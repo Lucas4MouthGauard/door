@@ -1,4 +1,4 @@
-# $DOOR - Random Doors to Absurd Worlds 🚪
+# $QubitGate - Random Doors to Absurd Worlds 🚪
 
 一个充满趣味和惊喜的AI门项目，每次点击门都会带你进入一个随机的荒谬世界！
 
@@ -22,7 +22,7 @@
 ## 🚀 分享内容
 
 分享时会自动带上这句话：
-> "The first $DOOR @DoorMeme on Solana
+> "The first $QubitGate @DoorMeme on Solana
 
 Think before you open
 
