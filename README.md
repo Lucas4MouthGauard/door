@@ -22,7 +22,7 @@
 ## 🚀 分享内容
 
 分享时会自动带上这句话：
-> "The first $QubitGate @DoorMeme on Solana
+> "The first $QubitGate @Qubit_Gate on Solana
 
 Think before you open
 
